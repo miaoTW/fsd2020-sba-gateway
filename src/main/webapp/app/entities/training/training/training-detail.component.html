@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="training">
+            <h2><span>Training</span> {{training.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{training.status}}</span>
+                </dd>
+                <dt><span>Progress</span></dt>
+                <dd>
+                    <span>{{training.progress}}</span>
+                </dd>
+                <dt><span>Fees</span></dt>
+                <dd>
+                    <span>{{training.fees}}</span>
+                </dd>
+                <dt><span>Commission Amount</span></dt>
+                <dd>
+                    <span>{{training.commissionAmount}}</span>
+                </dd>
+                <dt><span>Rating</span></dt>
+                <dd>
+                    <span>{{training.rating}}</span>
+                </dd>
+                <dt><span>Start Date</span></dt>
+                <dd>
+                    <span>{{training.startDate}}</span>
+                </dd>
+                <dt><span>End Date</span></dt>
+                <dd>
+                    <span>{{training.endDate}}</span>
+                </dd>
+                <dt><span>Start Time</span></dt>
+                <dd>
+                    <span>{{training.startTime}}</span>
+                </dd>
+                <dt><span>End Time</span></dt>
+                <dd>
+                    <span>{{training.endTime}}</span>
+                </dd>
+                <dt><span>Amount Received</span></dt>
+                <dd>
+                    <span>{{training.amountReceived}}</span>
+                </dd>
+                <dt><span>User Id</span></dt>
+                <dd>
+                    <span>{{training.userId}}</span>
+                </dd>
+                <dt><span>Mentor Id</span></dt>
+                <dd>
+                    <span>{{training.mentorId}}</span>
+                </dd>
+                <dt><span>Skill Id</span></dt>
+                <dd>
+                    <span>{{training.skillId}}</span>
+                </dd>
+                <dt><span>Razorpay Payment Id</span></dt>
+                <dd>
+                    <span>{{training.razorpayPaymentId}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/training', training.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

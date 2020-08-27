@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="mentorSkills">
+            <h2><span>Mentor Skills</span> {{mentorSkills.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>M Id</span></dt>
+                <dd>
+                    <span>{{mentorSkills.mId}}</span>
+                </dd>
+                <dt><span>S Id</span></dt>
+                <dd>
+                    <span>{{mentorSkills.sId}}</span>
+                </dd>
+                <dt><span>Self Rating</span></dt>
+                <dd>
+                    <span>{{mentorSkills.selfRating}}</span>
+                </dd>
+                <dt><span>Years Of Exp</span></dt>
+                <dd>
+                    <span>{{mentorSkills.yearsOfExp}}</span>
+                </dd>
+                <dt><span>Trainings Delivered</span></dt>
+                <dd>
+                    <span>{{mentorSkills.trainingsDelivered}}</span>
+                </dd>
+                <dt><span>Facilities Offered</span></dt>
+                <dd>
+                    <span>{{mentorSkills.facilitiesOffered}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mentor-skills', mentorSkills.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

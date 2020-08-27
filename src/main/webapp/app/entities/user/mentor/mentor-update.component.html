@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-mentor-heading">Create or edit a Mentor</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_username">Username</label>
+                    <input type="text" class="form-control" name="username" id="field_username"
+                           formControlName="username"/>
+                    <div *ngIf="editForm.get('username').invalid && (editForm.get('username').dirty || editForm.get('username').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('username').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_linkedinUrl">Linkedin Url</label>
+                    <input type="text" class="form-control" name="linkedinUrl" id="field_linkedinUrl"
+                           formControlName="linkedinUrl"/>
+                    <div *ngIf="editForm.get('linkedinUrl').invalid && (editForm.get('linkedinUrl').dirty || editForm.get('linkedinUrl').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('linkedinUrl').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_regDatetime">Reg Datetime</label>
+                    <div class="d-flex">
+                        <input id="field_regDatetime" type="datetime-local" class="form-control" name="regDatetime" formControlName="regDatetime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('regDatetime').invalid && (editForm.get('regDatetime').dirty || editForm.get('regDatetime').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('regDatetime').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('regDatetime').errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_regCode">Reg Code</label>
+                    <input type="text" class="form-control" name="regCode" id="field_regCode"
+                           formControlName="regCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_yearsOfExperience">Years Of Experience</label>
+                    <input type="number" class="form-control" name="yearsOfExperience" id="field_yearsOfExperience"
+                           formControlName="yearsOfExperience"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_active">Active</label>
+                    <input type="checkbox" class="form-control" name="active" id="field_active"
+                           formControlName="active"/>
+                    <div *ngIf="editForm.get('active').invalid && (editForm.get('active').dirty || editForm.get('active').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('active').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

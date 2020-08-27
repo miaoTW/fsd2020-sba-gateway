@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.fsd.sba",
+      "microservicePath": "../training"
+    },
+    "jhipsterVersion": "6.4.1",
+    "applicationType": "gateway",
+    "baseName": "gateway",
+    "packageName": "com.fsd.sba",
+    "packageFolder": "com/fsd/sba",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZDY1MDg3MGRhZjA1MzdmMGQyMDM3MWM3OWM1NjJlY2NhNDg2YWNiMjZmZWM3NmI2OTA3MmMzNTI4ZDE1ZmVmMWIxZGY1YjNhMzBkYTc1NjkwNGU5YzI1MjJmYjBjY2U2NDkwNGFmY2QwNDg3MjAzYzg1ODViZWUwMTZlN2I4NDQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}

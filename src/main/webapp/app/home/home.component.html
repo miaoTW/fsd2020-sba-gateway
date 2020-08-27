@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">Welcome</h1>
+        <p class="lead">Search Trainings</p>
+
+        <div [ngSwitch]="isAuthenticated()">
+            <div class="alert alert-success" *ngSwitchCase="true">
+                <span id="home-logged-message" *ngIf="account"
+                > You are logged in as user "{{account.login}}". </span>
+            </div>
+
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>If you want to </span>
+                <a class="alert-link" (click)="login()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+            </div>
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>You don't have an account yet?</span>&nbsp;
+                <a class="alert-link" routerLink="account/register">Register a new account</a>
+            </div>
+        </div>
+
+        <div class="input-group col-md-6">
+            <div class="input-group-btn">
+                <select class="form-control" (change)="setSelection($event.target.value)">
+                    <option *ngFor="let option of skillList" [value]="option.id">
+                        {{option.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="input-group-append">
+                <button (click)= "search()"> search</button>
+            </div>
+        </div>
+            <div class="table-responsive" class="col-md-12">
+                <table class="table table-striped" *ngIf="mentorSkills?.length > 0">
+                    <thead>
+                        <tr>
+                            <th><span>Name</span></th>
+                            <th><span>years of experience</span></th>
+                            <th><span>no. of trainings delivered</span></th>
+                            <th><span>Fee charged</span></th>
+                            <th><span>Date.</span></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let skill of mentorSkills;">
+                            <td>{{skill.name}}</td>
+                            <td>{{skill.yearsOfExp}}</td>
+                            <td>{{skill.trainingsDelivered}}</td>
+                            <td>{{skill.fee}}</td>
+                            <select class="form-control" #calendarSelected>
+                                <option *ngFor="let calendar of skill.mentorCalendarList" [value]="calendar.startDatetime + '-' +calendar.endDatetime" >
+                                    {{calendar.startDatetime | date:'MM-dd HH:mm'}}
+                                </option>
+                            </select>
+                            <td class="text-right">
+                                <div class="btn-group" *ngIf="isAuthenticated()">
+                                    <button type="submit"
+                                            (click)="sendProposal(skill.id,skill.mentorId, calendarSelected)"
+                                            class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Proposal</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>

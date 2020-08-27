@@ -1,0 +1,46 @@
+<div>
+    <h2 id="page-heading">
+        <span>Mentors</span>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="input-group col-md-6">
+        <div class="input-group-btn">
+            <input class="form-control" [(ngModel)]="searchName" />
+        </div>
+        <div class="input-group-append">
+            <button (click)= "search()"> search</button>
+        </div>
+    </div>
+    <div class="alert alert-warning" *ngIf="mentors?.length === 0 && isSearched">
+        <span>No mentors found</span>
+    </div>
+    <div class="table-responsive" *ngIf="mentors?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="username"><span>Username</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="linkedinUrl"><span>Linkedin Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="yearsOfExperience"><span>Years Of Experience</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let mentor of mentors ;trackBy: trackId">
+                <td><a [routerLink]="['/mentor', mentor.id, 'view' ]">{{mentor.id}}</a></td>
+                <td>{{mentor.username}}</td>
+                <td>{{mentor.linkedinUrl}}</td>
+                <td>{{mentor.yearsOfExperience}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="!isSearched || mentors?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
